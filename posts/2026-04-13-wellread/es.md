@@ -16,7 +16,7 @@ Y peor, Claude hace compound de todos estos turnos:
 turn 1 = fetch 1 = baseline (ejemplo 10k) + 5k
 turn 2 = fetch 2 = bl 10k + fetch 1 5k + fetch 2 5k
 turn 3 = fetch 3 = bl 10k + f1 5k + f2 5k + f3 5k
-total = 60k (no los 15k que probé la primera vez por olvidar compound)
+total = 60k
 ```
 
 Lógicamente esto es peor aún dependiendo de cuando hagas el research. Un research en una sesión recién empezada te funde 200k tokens (que es bastante). Pero es que si lo haces al turno 100 (que no es mucho, la verdad), se te lleva por delante fácil 3.5M de tokens.
