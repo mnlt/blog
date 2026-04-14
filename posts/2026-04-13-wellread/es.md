@@ -2,7 +2,7 @@
 
 Cada vez paso más tiempo construyendo con Claude. Y hacer research, se ha convertido en uno de mis hobbies más caros.
 
-Si no quieres comerte tus ventanas de contexto a la velocidad del rayo, el playbook es claro: tener claridad y decisiones antes de ejecutar. Necesitas ahorrar turnos fixeando errores más tarde. (1)
+Si no quieres comerte tus ventanas de contexto a la velocidad del rayo, el playbook es claro: tener claridad y decisiones antes de ejecutar. Necesitas ahorrar turnos fixeando errores más tarde. **(1)**
 
 Necesitas escapar de la trampa del training data.
 
@@ -19,9 +19,11 @@ turn 3 = fetch 3 = bl 10k + f1 5k + f2 5k + f3 5k
 total = 60k
 ```
 
-Lógicamente esto es peor aún dependiendo de cuando hagas el research. Un research en una sesión recién empezada te funde 200k tokens (que es bastante). Pero es que si lo haces al turno 100 (que no es mucho, la verdad), se te lleva por delante fácil 3.5M de tokens.
+Lógicamente esto hace que sea peor dependiendo de cuando hagas el research. 
 
-Aquí se pone interesante. Como decía arriba (1) "Necesitas ahorrar turnos fixeando errores más tarde". Cuanto más tarde resuelvas los problemas, más caros son.
+Un research en una sesión recién empezada te funde 200k tokens (que es bastante). Pero es que si lo haces al turno 100 (que no es mucho, la verdad), se te lleva por delante fácil 3.5M de tokens.
+
+Aquí se pone interesante. Como decía arriba **(1)** "Necesitas ahorrar turnos fixeando errores más tarde". Cuanto más tarde resuelvas los problemas, más caros son.
 
 Por poner en contexto, en marzo hiteé el cap de mi ventana de 5h a los ~4M (sigo investigando, no hay números oficiales y los que hay están desfasados).
 
@@ -43,7 +45,7 @@ Así que construí wellread.
 
 Un MCP que hace que, antes de que tu agente busque en la web, mire si alguien (o tú mismo) ya lo investigó antes.
 
-Además de no alucinar, no empezar de 0 cada vez y de llegar más lejos con menos turnos: con wellread da igual el momento de la sesión en que haga el research contra wellread, en caso de hit, lo que vuelve al contexto es 1 turno y unos 600 tokens. Solucionando así (1):
+Además de no alucinar, no empezar de 0 cada vez y de llegar más lejos con menos turnos: con wellread da igual el momento de la sesión en que haga el research contra wellread, en caso de hit, lo que vuelve al contexto es 1 turno y unos 600 tokens. Solucionando así **(1)**:
 
 | Momento de la sesión | Sin wellread | Con wellread |
 |---|---|---|
