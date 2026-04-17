@@ -118,6 +118,19 @@ Lo otro: todo lo posible vive en el servidor. Si cambia la lógica de búsqueda,
 
 Sin API keys manuales. El instalador registra un usuario anónimo y guarda la key en la config del cliente.
 
+## Privacidad
+
+Hay seis capas entre tu contexto privado y la red compartida:
+
+1. **Instrucción del hook** - antes de que nada salga de tu máquina, el hook le dice al agente que sanitice la query: quitar nombres de proyecto, API keys, rutas, credenciales. Solo el concepto técnico genérico se envía.
+2. **Schema del search** - el parámetro del search refuerza: "Remove project names, API keys, file paths, credentials."
+3. **Schema del save** - el save dice: "NEVER include project/repo/company names, internal URLs, file paths, credentials, business logic. Content is PUBLIC."
+4. **Gate de URLs (servidor, rechazo duro)** - cada source debe empezar con `https://` o `http://`. Rutas de archivos, identificadores de librerías, URLs internas - rechazado. La contribución no se guarda.
+5. **Detección de paths (servidor, rechazo duro)** - el servidor escanea content y search surface buscando paths locales (`/Users/...`, `/home/...`, `file://`, `C:\...`). Si encuentra uno, rechazado.
+6. **Por diseño** - el agente no reenvía tu input. Sintetiza desde fuentes públicas. Lo que se guarda es un resumen destilado de docs públicos, no tu código ni tu conversación.
+
+Para que algo privado llegue a otro usuario, el agente tendría que colarlo pasando sus propias instrucciones, el gate de URLs, el regex de paths, meterlo en un resumen genérico - y luego alguien tendría que buscar algo suficientemente similar para que aparezca.
+
 Si quieres probar: `npx wellread`
 
 GitHub: https://github.com/mnlt/wellread

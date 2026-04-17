@@ -118,6 +118,19 @@ The other thing: everything possible lives on the server. If the search logic, f
 
 No manual API keys. The installer registers an anonymous user and saves the key in the client config.
 
+## Privacy
+
+There are six layers between your private context and the shared network:
+
+1. **Hook instruction** - before anything leaves your machine, the hook tells the agent to sanitize the query: strip project names, API keys, file paths, credentials. Only the generic technical concept gets sent.
+2. **Search schema** - the search tool parameter reinforces: "Remove project names, API keys, file paths, credentials."
+3. **Save schema** - the save tool says: "NEVER include project/repo/company names, internal URLs, file paths, credentials, business logic. Content is PUBLIC."
+4. **URL gate (server, hard reject)** - every source must start with `https://` or `http://`. File paths, library identifiers, internal URLs - rejected. The contribution doesn't get saved.
+5. **Path detection (server, hard reject)** - the server scans content and search surface for local paths (`/Users/...`, `/home/...`, `file://`, `C:\...`). Found one? Rejected.
+6. **By design** - the agent doesn't forward your input. It synthesizes from public sources. What gets saved is a distilled summary of public docs, not your code or conversation.
+
+For something private to reach another user, the agent would have to sneak it past its own instructions, past the URL gate, past the path regex, into a generic summary - and then someone would need to search something similar enough to surface it.
+
 If you want to try: `npx wellread`
 
 GitHub: https://github.com/mnlt/wellread
